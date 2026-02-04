@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   description: "LENANA HOUSE",
 };
 
+import { InquiryProvider } from "@/context/InquiryContext";
+import { InquireDialog } from "@/components/InqureDialog";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,9 +28,12 @@ export default function RootLayout({
       <body
         className={`${linden.variable} antialiased selection:bg-secondary selection:text-white`}
       >
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <InquiryProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <InquireDialog />
+        </InquiryProvider>
       </body>
     </html>
   );

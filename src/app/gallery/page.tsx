@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useInquiry } from "@/context/InquiryContext";
 
 const Gallery = () => {
+  const { openInquiry } = useInquiry();
   return (
     <div className="flex flex-col w-full bg-[#fdfdfd]">
       {/* Hero Section */}
@@ -28,10 +32,10 @@ const Gallery = () => {
 
         {/* Content - Bottom Left */}
         <div className="absolute bottom-12 md:bottom-24 left-6 md:left-12 z-20 max-w-2xl">
-          <h1 className="text-3xl md:text-5xl uppercase tracking-widest mb-4 font-serif text-white leading-none">
+          <h1 className="text-3xl md:text-5xl uppercase tracking-widest mb-4 font-serif text-white leading-none italic">
             Gallery
           </h1>
-          <p className="text-lg md:text-xl font-light tracking-wide text-white/90 font-serif italic">
+          <p className="text-lg md:text-xl font-light tracking-wide text-white/90 font-serif">
             Lenana House villa
           </p>
         </div>
@@ -113,12 +117,12 @@ const Gallery = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white tracking-widest leading-tight uppercase">
             Ready to experience the <br /> ultimate villa retreat?
           </h2>
-          <Link
-            href="#enquiry"
-            className="inline-block px-12 py-4 bg-[#BFA58A] text-white uppercase tracking-widest text-sm hover:bg-white hover:text-dark transition-all duration-300 font-serif"
+          <button
+            onClick={openInquiry}
+            className="inline-block px-12 py-4 bg-[#BFA58A] text-white uppercase tracking-widest text-sm hover:bg-white hover:text-dark transition-all duration-300 font-serif cursor-pointer"
           >
             Enquire
-          </Link>
+          </button>
         </div>
       </section>
     </div>

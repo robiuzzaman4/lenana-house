@@ -49,10 +49,10 @@ const Experience = () => {
 
         {/* Content - Bottom Left */}
         <div className="absolute bottom-12 md:bottom-24 left-6 md:left-12 z-20 max-w-2xl">
-          <h1 className="text-3xl md:text-5xl uppercase tracking-widest mb-4 font-serif text-white leading-none">
+          <h1 className="text-3xl md:text-5xl uppercase tracking-widest mb-4 font-serif text-white leading-none italic">
             Experiences
           </h1>
-          <p className="text-lg md:text-xl font-light tracking-wide text-white/90 font-serif italic">
+          <p className="text-lg md:text-xl font-light tracking-wide text-white/90 font-serif">
             Discover the beauty of cape town
           </p>
         </div>
@@ -95,7 +95,7 @@ const Experience = () => {
                   />
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-serif text-dark tracking-wide">
+                  <h3 className="text-2xl font-serif text-dark tracking-wide italic">
                     {exp.title}
                   </h3>
                   <p className="text-dark/80 font-light leading-relaxed text-sm md:text-base">

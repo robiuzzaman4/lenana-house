@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useInquiry } from "@/context/InquiryContext";
 
 const Residence = () => {
+  const { openInquiry } = useInquiry();
   const features = [
     {
       title: "Cliffside Sea Views",
@@ -70,10 +74,10 @@ const Residence = () => {
 
         {/* Content - Bottom Left */}
         <div className="absolute bottom-12 md:bottom-24 left-6 md:left-12 z-20 max-w-2xl">
-          <h1 className="text-3xl md:text-5xl uppercase tracking-widest mb-4 font-serif text-white leading-none">
+          <h1 className="text-3xl md:text-5xl uppercase tracking-widest mb-4 font-serif text-white leading-none italic">
             Residence
           </h1>
-          <p className="text-lg md:text-xl font-light tracking-wide text-white/90 font-serif italic">
+          <p className="text-lg md:text-xl font-light tracking-wide text-white/90 font-serif">
             5 classic rooms pointed to the Atlantic & cub
           </p>
         </div>
@@ -113,7 +117,10 @@ const Residence = () => {
               layouts, natural textures, and panoramic views create an
               atmosphere that feels expansive yet deeply personal.
             </p>
-            <button className="px-8 py-3 bg-secondary text-white uppercase tracking-widest text-sm hover:bg-primary transition-colors duration-300">
+            <button
+              onClick={openInquiry}
+              className="px-8 py-3 bg-secondary text-white uppercase tracking-widest text-sm hover:bg-primary transition-colors duration-300 pointer-events-auto cursor-pointer"
+            >
               Enquire
             </button>
           </div>

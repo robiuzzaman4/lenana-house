@@ -28,10 +28,10 @@ const Rooms = () => {
 
         {/* Content - Bottom Left */}
         <div className="absolute bottom-12 md:bottom-24 left-6 md:left-12 z-20 max-w-2xl">
-          <h1 className="text-3xl md:text-5xl uppercase tracking-widest mb-4 font-serif text-white leading-none">
+          <h1 className="text-3xl md:text-5xl uppercase tracking-widest mb-4 font-serif text-white leading-none italic">
             Rooms
           </h1>
-          <p className="text-lg md:text-xl font-light tracking-wide text-white/90 font-serif italic">
+          <p className="text-lg md:text-xl font-light tracking-wide text-white/90 font-serif">
             Private, calm spaces designed for couples who value comfort,
             privacy, and connection with nature.
           </p>

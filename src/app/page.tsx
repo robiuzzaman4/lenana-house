@@ -16,7 +16,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/30" />
 
         <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-5xl md:text-8xl lg:text-9xl font-serif tracking-[0.2em] mb-8">
+          <h1 className="text-5xl md:text-8xl lg:text-9xl font-serif tracking-[0.2em] mb-8 italic">
             LENANA HOUSE
           </h1>
           <div className="flex justify-center space-x-2">

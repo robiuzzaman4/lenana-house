@@ -8,10 +8,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           {/* Brand Info */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-serif tracking-[0.2em] uppercase">
+            <h2 className="text-2xl font-serif tracking-[0.2em] uppercase italic">
               LENANA
             </h2>
-            <p className="text-white/60 text-xs leading-relaxed uppercase tracking-wider max-w-[200px] ">
+            <p className="text-white text-sm leading-relaxed tracking-wider max-w-[200px]">
               A private villa for seasonal living and quiet stays.
             </p>
           </div>

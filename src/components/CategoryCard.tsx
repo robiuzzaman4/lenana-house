@@ -34,7 +34,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
 
       {/* Title (Centered) */}
       <div className="absolute inset-0 flex items-center justify-center text-white pointer-events-none">
-        <h3 className="text-3xl md:text-5xl font-serif tracking-[0.2em] uppercase">
+        <h3 className="text-3xl md:text-5xl font-serif tracking-[0.2em] uppercase italic">
           {title}
         </h3>
       </div>

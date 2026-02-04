@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useInquiry } from "@/context/InquiryContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +15,8 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const { openInquiry } = useInquiry();
 
   return (
     <>
@@ -57,12 +60,12 @@ const Header = () => {
         </div>
 
         {/* Enquiry Button */}
-        <Link
-          href="#enquiry"
-          className="bg-white text-dark px-6 py-3 text-sm uppercase tracking-widest hover:bg-opacity-90 transition-all font-serif"
+        <button
+          onClick={openInquiry}
+          className="bg-white text-dark px-6 py-3 text-sm uppercase tracking-widest hover:bg-opacity-90 transition-all font-serif cursor-pointer shadow-sm"
         >
           Enquiry
-        </Link>
+        </button>
       </header>
 
       {/* Full Screen Menu Overlay */}
@@ -101,13 +104,15 @@ const Header = () => {
               LENANA HOUSE
             </Link>
 
-            <Link
-              href="#enquiry"
-              onClick={() => setIsOpen(false)}
-              className="bg-secondary text-white px-6 py-3 text-xs uppercase tracking-widest"
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                openInquiry();
+              }}
+              className="bg-secondary text-white px-6 py-3 text-xs uppercase tracking-widest cursor-pointer hover:bg-opacity-90 transition-all"
             >
               Enquiry
-            </Link>
+            </button>
           </header>
 
           <nav className="flex-1 flex flex-col justify-center px-10 space-y-8">
