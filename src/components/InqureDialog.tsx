@@ -79,9 +79,9 @@ export const InquireDialog = () => {
 
           <button
             type="submit"
-            className="w-full py-4 bg-secondary text-white tracking-[0.2em] text-sm hover:bg-dark transition-all duration-500 uppercase font-serif hover:cursor-pointer"
+            className="w-full py-4 bg-secondary text-white tracking-[0.2em] text-sm hover:bg-dark transition-all duration-500 font-serif hover:cursor-pointer"
           >
-            Send enquiry
+            Send Enquiry
           </button>
         </form>
       </DialogContent>

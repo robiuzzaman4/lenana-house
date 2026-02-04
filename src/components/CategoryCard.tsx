@@ -19,7 +19,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
     <Link
       href={link}
       className={`group relative overflow-hidden ${
-        small ? "h-[400px] md:h-[500px]" : "h-[500px] md:h-[600px]"
+        small ? "h-[400px] md:h-[730px]" : "h-[500px] md:h-[730px]"
       } w-full block`}
     >
       <Image

@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <footer className="relative bg-dark text-white pt-20 pb-10 px-6 md:px-12 font-serif overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+        <div className="grid lg:grid-cols-2 gap-12 mb-20">
           {/* Brand Info */}
-          <div className="space-y-6">
+          <div className="space-y-7">
             <h2 className="text-2xl font-serif tracking-[0.2em] uppercase italic">
               LENANA
             </h2>
@@ -16,12 +16,9 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-sm uppercase tracking-widest text-secondary mb-6">
-              Residence
-            </h3>
-            <ul className="space-y-2 text-sm tracking-wide ">
+          <div className="grid lg:grid-cols-3 gap-12 lg:gap-[160px]">
+            {/* Quick Links */}
+            <ul className="space-y-5 text-sm tracking-wide text-white/50">
               <li>
                 <Link
                   href="/residence"
@@ -35,7 +32,7 @@ const Footer = () => {
                   href="/rooms"
                   className="hover:text-secondary transition-colors"
                 >
-                  Experience
+                  Rooms
                 </Link>
               </li>
               <li>
@@ -43,26 +40,21 @@ const Footer = () => {
                   href="/experience"
                   className="hover:text-secondary transition-colors"
                 >
-                  Wellness
+                  Experiences
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/gallery"
                   className="hover:text-secondary transition-colors"
                 >
-                  Contact
+                  Gallery
                 </Link>
               </li>
             </ul>
-          </div>
 
-          {/* More Links */}
-          <div className="space-y-4">
-            <h3 className="text-sm uppercase tracking-widest text-secondary mb-6">
-              Follow
-            </h3>
-            <ul className="space-y-2 text-sm tracking-wide ">
+            {/* More Links */}
+            <ul className="space-y-5 text-sm tracking-wide text-white/50">
               <li>
                 <Link
                   href="/"
@@ -96,27 +88,18 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
-          </div>
 
-          {/* Address */}
-          <div className="space-y-4">
-            <h3 className="text-sm uppercase tracking-widest text-secondary mb-6 ">
-              Location
-            </h3>
-            <p className="text-sm leading-relaxed tracking-wide  text-white/80">
-              The Lenana villa
-              <br />
-              18 Via della Collina
-              <br />
-              20123, Milan
-              <br />
-              Italy
-            </p>
+            {/* Address */}
+            <div className="space-y-4">
+              <p className="text-sm leading-relaxed tracking-wide text-white/50 max-w-[140px] ">
+                The Lenana villa 18 Via della Collina 20123, Milan Italy
+              </p>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs tracking-widest text-white/30 ">
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs tracking-widest text-white/30 ">
           <div className="flex space-x-6">
             <Link href="/" className="hover:text-white transition-colors">
               Privacy Policy
