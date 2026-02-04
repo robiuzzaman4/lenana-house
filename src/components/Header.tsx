@@ -76,7 +76,7 @@ const Header = () => {
           isOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="flex flex-col h-full max-w-[1312px] mx-auto w-full px-4 lg:px-16">
+        <div className="flex flex-col h-full max-w-[1312px] mx-auto w-full px-4 lg:px-0">
           <header className="flex items-center justify-between py-6">
             <button
               onClick={() => setIsOpen(false)}

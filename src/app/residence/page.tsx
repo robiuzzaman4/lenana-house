@@ -1,53 +1,11 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useInquiry } from "@/context/InquiryContext";
+import Intro from "@/components/pages/residence/Intro";
+import Featured from "@/components/pages/residence/Featured";
+import FeaturedGrid from "@/components/pages/residence/FeaturedGrid";
+import ImageGallery from "@/components/pages/residence/ImageGallery";
 
 const Residence = () => {
-  const { openInquiry } = useInquiry();
-  const features = [
-    {
-      title: "Cliffside Sea Views",
-      description:
-        "The villa is positioned on a private cliff, offering uninterrupted ocean views from living areas, bedrooms, and outdoor spaces.",
-    },
-    {
-      title: "Open Living Spaces",
-      description:
-        "Spacious interiors with floor-to-ceiling glass create a seamless transition between indoor comfort and the natural surroundings.",
-    },
-    {
-      title: "Private & Secluded",
-      description:
-        "No shared spaces, no crowds. The residence is fully private, designed for guests who value discretion and calm.",
-    },
-    {
-      title: "Luxury Materials & Finishes",
-      description:
-        "High-quality natural materials, refined textures, and minimalist detailing define the interior experience.",
-    },
-    {
-      title: "Natural Light Architecture",
-      description:
-        "Carefully planned layouts allow daylight to flow through the villa throughout the day without compromising privacy.",
-    },
-    {
-      title: "Indoor–Outdoor Living",
-      description:
-        "Living and dining areas open directly to outdoor spaces, allowing guests to enjoy the sea breeze and views effortlessly.",
-    },
-  ];
-
-  const galleryImages = [
-    "/images/residence/r1.png",
-    "/images/residence/r2.png",
-    "/images/residence/r3.png",
-    "/images/residence/r4.png",
-    "/images/residence/r5.png",
-    "/images/residence/r6.png",
-  ];
-
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
@@ -99,89 +57,17 @@ const Residence = () => {
       </section>
 
       {/* Intro Section */}
-      <section className="py-24 md:py-32 px-4 md:px-8 bg-white text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-5xl leading-tight font-serif text-primary italic">
-            Lenana House is crafted as a full private residence, not a hotel
-            experience. Every area is intentionally designed to feel open,
-            quiet, and connected to the surrounding sea and landscape.
-          </h2>
-        </div>
-      </section>
+      <Intro />
 
       {/* Featured Section */}
-      <section className="py-24 md:py-32 px-4 md:px-8 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
-            <h3 className="text-4xl md:text-6xl text-primary leading-tight font-serif">
-              Private cliffside living with uninterrupted sea views.
-            </h3>
-            <p className="text-lg text-primary/80 leading-relaxed">
-              The Residence is a private world set above the ocean where
-              architecture, light, and landscape move in quiet harmony. Open
-              layouts, natural textures, and panoramic views create an
-              atmosphere that feels expansive yet deeply personal.
-            </p>
-            <button
-              onClick={openInquiry}
-              className="px-8 py-3 bg-secondary text-white uppercase tracking-widest text-sm hover:bg-primary transition-colors duration-300 pointer-events-auto cursor-pointer"
-            >
-              Enquire
-            </button>
-          </div>
-          <div className="relative aspect-4/5 w-full overflow-hidden">
-            <Image
-              src="/images/residence/middle.png"
-              alt="Cliffside living"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
+
+      <Featured />
 
       {/* Features Grid */}
-      <section className="py-24 md:py-32 px-4 md:px-8 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
-            {features.map((feature, index) => (
-              <div key={index} className="space-y-4">
-                <h4 className="text-3xl font-serif text-dark">
-                  {feature.title}
-                </h4>
-                <p className="text-foreground leading-relaxed text-base">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeaturedGrid />
 
       {/* Image Gallery */}
-      <section className="pb-24 md:pb-32 px-4 md:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {galleryImages.map((img, index) => (
-              <div
-                key={index}
-                className={`relative overflow-hidden ${
-                  index === 2 || index === 5
-                    ? "md:col-span-2 aspect-video"
-                    : "md:col-span-1 aspect-4/5"
-                }`}
-              >
-                <Image
-                  src={img}
-                  alt={`Residence gallery image ${index + 1}`}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ImageGallery />
     </div>
   );
 };
