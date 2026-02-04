@@ -1,18 +1,42 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import CategoryCard from "@/components/CategoryCard";
 
 export default function HomePage() {
+  const [isDay, setIsDay] = useState(true);
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        <Image
-          src="/images/home/hero_day.png"
-          alt="Lenana House Hero"
-          fill
-          priority
-          className="object-cover"
-        />
+        {/* Day Image */}
+        <div
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${isDay ? "opacity-100" : "opacity-0"}`}
+        >
+          <Image
+            src="/images/home/hero_day.png"
+            alt="Lenana House Hero Day"
+            fill
+            priority
+            className="object-cover"
+          />
+        </div>
+
+        {/* Night Image */}
+        <div
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${!isDay ? "opacity-100" : "opacity-0"}`}
+        >
+          <Image
+            src="/images/home/hero_night.png"
+            alt="Lenana House Hero Night"
+            fill
+            priority={!isDay}
+            className="object-cover"
+          />
+        </div>
+
         <div className="absolute inset-0 bg-black/30" />
 
         <div className="relative z-10 text-center text-white px-4">
@@ -26,8 +50,34 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/* Day/Night Switcher */}
+        <div className="absolute bottom-6 left-6 z-20">
+          <div className="bg-[#FAF9F6] p-1.5 flex items-center shadow-2xl">
+            <button
+              onClick={() => setIsDay(true)}
+              className={`px-8 py-3 text-sm font-serif tracking-widest transition-all duration-500 cursor-pointer ${
+                isDay
+                  ? "bg-[#253940] text-white"
+                  : "text-[#253940] hover:bg-black/5"
+              }`}
+            >
+              Day
+            </button>
+            <button
+              onClick={() => setIsDay(false)}
+              className={`px-8 py-3 text-sm font-serif tracking-widest transition-all duration-500 cursor-pointer ${
+                !isDay
+                  ? "bg-[#253940] text-white"
+                  : "text-[#253940] hover:bg-black/5"
+              }`}
+            >
+              Night
+            </button>
+          </div>
+        </div>
+
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center">
           <div className="w-px h-16 bg-white/50 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full bg-white animate-scroll-down"></div>
           </div>
