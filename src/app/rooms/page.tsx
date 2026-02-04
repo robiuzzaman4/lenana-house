@@ -1,3 +1,7 @@
+import Gallery1 from "@/components/pages/rooms/Gallery1";
+import Gallery2 from "@/components/pages/rooms/Gallery2";
+import Intro from "@/components/pages/rooms/Intro";
+import ResidenceShaped from "@/components/pages/rooms/ResidenceShaped";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -54,104 +58,16 @@ const Rooms = () => {
       </section>
 
       {/* Intro Section - Superior Double Room */}
-      <section className="py-12 md:py-24 px-4 md:px-8 text-center">
-        <div className="max-w-4xl mx-auto space-y-4">
-          <h2 className="text-4xl md:text-5xl font-serif text-dark">
-            Signature Double Room
-          </h2>
-          <p className="text-dark tracking-wide text-baes">
-            Private, calm spaces designed for couples who value comfort,
-            privacy, and connection with nature.
-          </p>
-        </div>
-      </section>
+      <Intro />
 
       {/* Gallery 1 */}
-      <section className="py-12 md:py-16 px-4 md:px-8 bg-white">
-        <div className="max-w-7xl mx-auto space-y-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="relative aspect-4/5 overflow-hidden">
-              <Image
-                src="/images/rooms/r1.png"
-                alt="Room detail 1"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="relative aspect-4/5 overflow-hidden">
-              <Image
-                src="/images/rooms/r2.png"
-                alt="Room detail 2"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-          <div className="relative aspect-video w-full overflow-hidden">
-            <Image
-              src="/images/rooms/r3.png"
-              alt="Room view"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      <Gallery1 />
 
       {/* Section 2 - A residence shaped */}
-      <section className="py-24 md:py-32 px-4 md:px-8 bg-white">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-start">
-          <h3 className="text-3xl md:text-5xl font-serif text-dark leading-tight">
-            A residence shaped by its surroundings.
-          </h3>
-          <p className="text-lg text-dark leading-relaxed font-light">
-            Every room at Lenana House is positioned to take advantage of
-            natural light, views, and airflow. Materials are kept honest and
-            warm, allowing the architecture to stay calm while the surroundings
-            do the talking.
-          </p>
-        </div>
-      </section>
+      <ResidenceShaped />
 
       {/* Gallery 2 */}
-      <section className="pb-24 md:pb-32 px-4 md:px-8 bg-white">
-        <div className="max-w-7xl mx-auto space-y-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="relative aspect-4/5 overflow-hidden">
-              <Image
-                src="/images/rooms/r4.png"
-                alt="Room detail 4"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="relative aspect-4/5 overflow-hidden">
-              <Image
-                src="/images/rooms/r5.png"
-                alt="Room detail 5"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-          <div className="relative aspect-video w-full overflow-hidden">
-            <Image
-              src="/images/rooms/r6.png"
-              alt="Room detail 6"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="relative aspect-video w-full overflow-hidden">
-            <Image
-              src="/images/rooms/r7.png"
-              alt="Room detail 7"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      <Gallery2 />
     </div>
   );
 };
