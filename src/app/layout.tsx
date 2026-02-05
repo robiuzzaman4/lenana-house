@@ -8,6 +8,7 @@ const linden = Linden_Hill({
   variable: "--font-serif",
   subsets: ["latin"],
   weight: ["400"],
+  style: ["italic", "normal"],
 });
 
 export const metadata: Metadata = {
