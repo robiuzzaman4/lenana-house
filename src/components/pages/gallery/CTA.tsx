@@ -10,7 +10,7 @@ const CTA = () => {
         </h2>
         <button
           onClick={openInquiry}
-          className="inline-block px-12 py-4 bg-[#BFA58A] text-white uppercase tracking-widest text-sm hover:bg-white hover:text-dark transition-all duration-300 font-serif cursor-pointer"
+          className="inline-block px-12 py-4 bg-[#BFA58A] hover:bg-white hover:text-dark transition-all duration-300 font-serif cursor-pointer"
         >
           Enquire
         </button>
