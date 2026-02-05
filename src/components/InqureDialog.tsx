@@ -21,33 +21,33 @@ export const InquireDialog = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={closeInquiry}>
-      <DialogContent className="sm:max-w-[600px] bg-white text-dark border-none p-8 data-open:animate-fade-in-up data-open:animate-duration-500 data-closed:animate-fade-out-down data-closed:animate-duration-300">
+      <DialogContent className="sm:max-w-[600px] bg-[#F5F4F4] text-dark border-none p-8 data-open:animate-fade-in-up data-open:animate-duration-500 data-closed:animate-fade-out-down data-closed:animate-duration-300">
         <DialogHeader className="mb-8">
-          <DialogTitle className="text-3xl font-serif tracking-[0.3em] text-center text-dark italic">
+          <DialogTitle className="text-3xl font-serif tracking-[0.3em] text-center text-secondary italic">
             ENQUIRY
           </DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <FormField
-            label="First name"
-            name="firstName"
+            label="Name"
+            name="name"
             type="text"
-            placeholder="Your first name"
+            placeholder="Enter your name"
             required
           />
           <FormField
             label="Email"
             name="email"
             type="email"
-            placeholder="Your email address"
+            placeholder="Enter your email"
             required
           />
           <FormField
             label="Phone number"
             name="phone"
             type="tel"
-            placeholder="+ (242) 234 4567"
+            placeholder="Enter your phone number"
             required
           />
 
@@ -72,14 +72,14 @@ export const InquireDialog = () => {
             </label>
             <textarea
               name="message"
-              className="w-full bg-gray-50 border border-black/5 px-4 py-3 min-h-[120px] focus:outline-none focus:border-secondary transition-colors text-sm text-dark placeholder:text-dark/30"
-              placeholder="How can we help?"
+              className="w-full bg-white border border-black/5 px-4 py-3 min-h-[120px] focus:outline-none focus:border-secondary transition-colors text-sm text-dark placeholder:text-dark/30"
+              placeholder="Enter your message"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-4 bg-secondary text-white tracking-[0.2em] text-sm hover:bg-dark transition-all duration-500 font-serif hover:cursor-pointer"
+            className="w-full py-4 bg-secondary text-dark hover:text-white tracking-[0.2em] text-base hover:bg-dark transition-all duration-500 font-serif hover:cursor-pointer"
           >
             Send Enquiry
           </button>
@@ -112,7 +112,7 @@ function FormField({
         type={type}
         placeholder={placeholder}
         required={required}
-        className="w-full bg-gray-50 border border-black/5 px-4 py-3 focus:outline-none focus:border-secondary transition-colors text-sm text-dark placeholder:text-dark/30"
+        className="w-full bg-white border border-black/5 px-4 py-3 focus:outline-none focus:border-secondary transition-colors text-sm text-dark placeholder:text-dark/30"
       />
     </div>
   );

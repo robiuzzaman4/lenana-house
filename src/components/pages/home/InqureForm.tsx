@@ -13,12 +13,16 @@ const InqureForm = () => {
         </div>
 
         <form className="space-y-6 bg-[#F0EFEF] px-12 py-15">
-          <FormField label="First name" type="text" placeholder="First name" />
-          <FormField label="Email" type="email" placeholder="Email" />
+          <FormField label="Name" type="text" placeholder="Enter your name" />
+          <FormField
+            label="Email"
+            type="email"
+            placeholder="Enter your email"
+          />
           <FormField
             label="Phone number"
             type="tel"
-            placeholder="+ (242) 234 4567"
+            placeholder="Enter your phone number"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -29,12 +33,12 @@ const InqureForm = () => {
           <div className="space-y-2">
             <label className="text-sm tracking-widest text-dark">Message</label>
             <textarea
-              className="w-full border border-black/5 px-4 py-3 min-h-[120px] focus:outline-none focus:border-secondary transition-colors text-sm bg-[#F5F5F4]"
-              placeholder="How can we help?"
+              className="w-full border border-black/5 px-4 py-3 min-h-[120px] focus:outline-none focus:border-secondary transition-colors text-sm bg-white"
+              placeholder="Enter your message"
             />
           </div>
 
-          <button className="w-full md:w-auto px-12 py-4 bg-secondary text-dark tracking-widest text-xs hover:bg-dark hover:text-white transition-colors duration-500 hover:cursor-pointer">
+          <button className="w-full md:w-auto px-12 py-4 bg-secondary text-dark tracking-widest text-base hover:bg-dark hover:text-white transition-colors duration-500 hover:cursor-pointer">
             Send
           </button>
         </form>
@@ -60,7 +64,7 @@ function FormField({
       <input
         type={type}
         placeholder={placeholder}
-        className="w-full border border-black/5 px-4 py-3 focus:outline-none focus:border-secondary transition-colors text-sm bg-[#F5F5F4]"
+        className="w-full border border-black/5 px-4 py-3 focus:outline-none focus:border-secondary transition-colors text-sm bg-white"
       />
     </div>
   );

@@ -3,18 +3,17 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useInquiry } from "@/context/InquiryContext";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useScroll } from "@/hooks/useScroll";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 250);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  // We use the same threshold as the logo animation trigger
+  const scrolled = useScroll(100);
 
   const { openInquiry } = useInquiry();
 
@@ -50,20 +49,35 @@ const Header = () => {
             </svg>
           </button>
 
-          {/* Brand Name (Hidden in mobile header if shown in hero, but usually good to have) */}
+          {/* Logo Area */}
           <div className="hidden md:block">
-            <Link
-              href="/"
-              className="text-white font-serif tracking-[0.2em] text-lg uppercase"
-            >
-              LENANA HOUSE
-            </Link>
+            {(!isHome || scrolled) && (
+              <motion.div
+                layoutId={isHome ? "main-logo" : undefined}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 30,
+                  mass: 0.8,
+                }}
+              >
+                <Link href={"/"}>
+                  <Image
+                    src={"/images/brand.png"}
+                    alt="lenana house"
+                    width={1080}
+                    height={720}
+                    className="w-fit h-[20px] object-contain"
+                  />
+                </Link>
+              </motion.div>
+            )}
           </div>
 
           {/* Enquiry Button */}
           <button
             onClick={openInquiry}
-            className="bg-white text-dark px-6 py-3 text-sm tracking-widest hover:bg-opacity-90 transition-all font-serif cursor-pointer shadow-sm"
+            className="bg-white hover:bg-secondary text-dark px-6 py-3 text-base tracking-widest hover:bg-opacity-90 transition-all font-serif cursor-pointer shadow-sm"
           >
             Enquiry
           </button>
@@ -98,20 +112,12 @@ const Header = () => {
               </svg>
             </button>
 
-            <Link
-              href="/"
-              onClick={() => setIsOpen(false)}
-              className="text-white font-serif tracking-[0.2em] text-sm uppercase"
-            >
-              LENANA HOUSE
-            </Link>
-
             <button
               onClick={() => {
                 setIsOpen(false);
                 openInquiry();
               }}
-              className="bg-secondary text-white px-6 py-3 text-xs uppercase tracking-widest cursor-pointer hover:bg-opacity-90 transition-all"
+              className="bg-secondary text-white px-6 py-3 text-base tracking-widest cursor-pointer hover:bg-opacity-90 transition-all"
             >
               Enquiry
             </button>

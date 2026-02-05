@@ -109,7 +109,7 @@ function DialogFooter({
       {children}
       {showCloseButton && (
         <DialogPrimitive.Close asChild>
-          <button className="px-6 py-2 border border-dark/10 hover:bg-dark hover:text-white transition-all text-xs tracking-widest uppercase">
+          <button className="px-6 py-2 border border-dark/10 hover:bg-dark hover:text-white transition-all text-base tracking-widest uppercase">
             Close
           </button>
         </DialogPrimitive.Close>

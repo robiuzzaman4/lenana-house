@@ -19,7 +19,7 @@ const Featured = () => {
           </p>
           <button
             onClick={openInquiry}
-            className="px-8 py-3 bg-secondary text-foreground hover:text-white tracking-widest text-sm hover:bg-primary transition-colors duration-300 pointer-events-auto cursor-pointer"
+            className="px-8 py-3 bg-secondary text-foreground hover:text-white tracking-widest text-base hover:bg-primary transition-colors duration-300 pointer-events-auto cursor-pointer"
           >
             Enquire
           </button>

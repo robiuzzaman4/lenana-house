@@ -66,14 +66,14 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
 
         {/* Title (Centered) */}
         <div className="absolute inset-0 flex items-center justify-center text-white pointer-events-none">
-          <h3 className="text-3xl md:text-5xl font-serif tracking-[0.2em] uppercase italic">
+          <h3 className="text-3xl md:text-5xl font-serif tracking-[0.5%] uppercase italic">
             {title}
           </h3>
         </div>
 
         {/* Discover Link (Bottom Left) */}
         <div className="absolute bottom-10 left-10 text-white">
-          <span className="text-lg tracking-widest border-b border-white pb-1 group-hover:opacity-70 transition-opacity">
+          <span className="text-lg lg:text-[32px] tracking-widest border-b border-white pb-1 group-hover:opacity-70 transition-opacity">
             Discover
           </span>
         </div>

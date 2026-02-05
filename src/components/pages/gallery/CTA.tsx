@@ -5,7 +5,7 @@ const CTA = () => {
   return (
     <section className="py-[148px] px-4 lg:px-16">
       <div className="max-w-[1072px] mx-auto bg-[#253940] py-[72px] text-center space-y-6">
-        <h2 className="text-3xl lg:text-5xl uppercase max-w-[640px] text-white mx-auto italic">
+        <h2 className="text-3xl lg:text-5xl uppercase max-w-[640px] text-white mx-auto italic tracking-[0.5%]">
           Ready to experience the ultimate villa retreat?
         </h2>
         <button

@@ -39,7 +39,7 @@ const Rooms = () => {
                 Rooms
               </h1>
               <p className="text-base text-white tracking-wider">
-                Luxurious rooms
+                Explore luxurious rooms
               </p>
             </div>
 
