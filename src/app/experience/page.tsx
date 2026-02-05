@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Experience = () => {
   return (
-    <div className="flex flex-col w-full bg-white">
+    <div className="flex flex-col w-full">
       {/* Hero Section */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <Image
