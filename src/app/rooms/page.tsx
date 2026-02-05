@@ -24,7 +24,7 @@ const Rooms = () => {
           <div className="max-w-[1312px] mx-auto w-full h-full flex flex-col relative">
             {/* Breadcrumbs - Top Left of container */}
             <div className="pt-28">
-              <nav className="flex items-center space-x-2 text-white/80 text-sm md:text-base font-serif">
+              <nav className="flex items-center space-x-2 text-white/80 text-lg font-sans">
                 <Link href="/" className="hover:text-white transition-colors">
                   Home
                 </Link>
@@ -35,12 +35,11 @@ const Rooms = () => {
 
             {/* Content - Bottom Left of container */}
             <div className="mt-auto mb-12 md:mb-24 max-w-2xl">
-              <h1 className="text-3xl md:text-5xl uppercase tracking-widest mb-4 font-serif text-white leading-none italic">
+              <h1 className="text-3xl lg:text-5xl uppercase mb-2 text-white italic">
                 Rooms
               </h1>
-              <p className="text-lg md:text-xl font-light tracking-wide text-white/90 font-serif">
-                Private, calm spaces designed for couples who value comfort,
-                privacy, and connection with nature.
+              <p className="text-base text-white tracking-wider">
+                Luxurious rooms
               </p>
             </div>
 
