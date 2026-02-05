@@ -44,14 +44,14 @@ const Experience = () => {
             </div>
 
             {/* Scroll Indicator - Bottom Right of container */}
-            <div className="absolute bottom-10 right-0 hidden md:flex flex-col items-center gap-2">
+            {/* <div className="absolute bottom-10 right-0 hidden md:flex flex-col items-center gap-2">
               <span className="text-white/60 text-xs uppercase tracking-[0.3em] rotate-90 origin-right translate-y-12">
                 Scroll
               </span>
               <div className="w-px h-12 bg-white/20 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full bg-white animate-scroll-down" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
