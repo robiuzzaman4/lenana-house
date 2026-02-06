@@ -1,3 +1,4 @@
+"use client";
 import { useInquiry } from "@/context/InquiryContext";
 
 const CTA = () => {
