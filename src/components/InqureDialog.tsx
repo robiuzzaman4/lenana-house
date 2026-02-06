@@ -17,7 +17,7 @@ export const InquireDialog = () => {
   return (
     <Dialog open={isOpen} onOpenChange={closeInquiry}>
       <DialogContent className="sm:max-w-[1100px] w-[95vw] bg-white text-dark border-none p-0 overflow-hidden rounded-none data-open:animate-fade-in-up data-open:animate-duration-500 data-closed:animate-fade-out-down data-closed:animate-duration-300">
-        <div className="relative grid grid-cols-1 lg:grid-cols-2 h-full max-h-[90vh] overflow-y-auto">
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 h-full max-h-[90vh] overflow-y-auto">
           {/* Left side: Info & Calendar */}
           <div className="flex-1 p-10 overflow-y-auto">
             <div className="space-y-12 h-full flex flex-col justify-center">
@@ -39,7 +39,7 @@ export const InquireDialog = () => {
           </div>
 
           {/* Right side: Form */}
-          <div className="bg-[#F0EFEF] overflow-y-auto">
+          <div className="overflow-y-auto pr-10">
             <div className="h-full flex flex-col justify-center">
               <InquiryForm />
             </div>

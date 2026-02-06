@@ -110,7 +110,7 @@ const Calendar = () => {
         ))}
       </div>
 
-      <div className="mt-12 flex items-center gap-8 text-xs tracking-widest uppercase">
+      <div className="mt-12 flex items-center gap-8 text-xs tracking-widest">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 bg-dark"></div>
           <span>Available</span>
