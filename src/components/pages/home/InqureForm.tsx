@@ -36,7 +36,7 @@ const InqureForm = () => {
             </p>
           </div>
 
-          <div className="hidden md:block">
+          <div>
             <Calendar
               mode="range"
               selected={selectedDates}

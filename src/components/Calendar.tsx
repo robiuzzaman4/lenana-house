@@ -146,17 +146,17 @@ const Calendar: React.FC<CalendarProps> = ({
     } else {
       const range = selectedValue as DateRange;
 
-      // If no start date, set it
+      // If no start date, set both from and to to the same date initially
       if (!range?.from) {
-        const newRange = { from: clickedDate, to: null };
+        const newRange = { from: clickedDate, to: clickedDate };
         setInternalSelected(newRange);
         onSelect?.(newRange);
       }
-      // If start date exists but no end date
-      else if (!range.to) {
+      // If start date exists (and to is the same as from initially)
+      else if (range.from.toDateString() === range.to?.toDateString()) {
         // If clicked date is before start, reset with new start
         if (clickedDate < range.from) {
-          const newRange = { from: clickedDate, to: null };
+          const newRange = { from: clickedDate, to: clickedDate };
           setInternalSelected(newRange);
           onSelect?.(newRange);
         } else {
@@ -166,9 +166,9 @@ const Calendar: React.FC<CalendarProps> = ({
           onSelect?.(newRange);
         }
       }
-      // If both dates are set, start over
+      // If both dates are set and different, start over
       else {
-        const newRange = { from: clickedDate, to: null };
+        const newRange = { from: clickedDate, to: clickedDate };
         setInternalSelected(newRange);
         onSelect?.(newRange);
       }

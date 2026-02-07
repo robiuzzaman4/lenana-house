@@ -41,27 +41,34 @@ interface InquiryFormProps {
 const InquiryForm: React.FC<InquiryFormProps> = ({ selectedDates }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Validate that dates are selected
+    if (!selectedDates?.from || !selectedDates?.to) {
+      alert("Please select check-in and check-out dates before submitting.");
+      return;
+    }
+
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
     // Include selected dates in submission
     const submissionData = {
       ...data,
-      checkIn: selectedDates?.from?.toLocaleDateString() || null,
-      checkOut: selectedDates?.to?.toLocaleDateString() || null,
+      checkIn: selectedDates.from.toLocaleDateString(),
+      checkOut: selectedDates.to.toLocaleDateString(),
     };
 
     console.log("Form Submitted:", submissionData);
   };
 
-  const formatDate = (date: Date | null) => {
-    if (!date) return "";
-    return date.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    });
-  };
+  // const formatDate = (date: Date | null) => {
+  //   if (!date) return "";
+  //   return date.toLocaleDateString("en-US", {
+  //     month: "short",
+  //     day: "numeric",
+  //     year: "numeric",
+  //   });
+  // };
 
   return (
     <form
@@ -85,7 +92,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ selectedDates }) => {
       />
 
       {/* Date Range Display */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <label className="text-sm tracking-widest text-dark block">
             Check-in
@@ -112,7 +119,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ selectedDates }) => {
             className="w-full border border-black/5 px-4 py-4 focus:outline-none focus:border-secondary transition-colors text-sm bg-white text-dark placeholder:text-dark/30"
           />
         </div>
-      </div>
+      </div> */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
