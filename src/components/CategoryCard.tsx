@@ -16,14 +16,14 @@ interface CategoryCardProps {
   title: string;
   image: string;
   link: string;
-  small?: boolean;
+  className?: string;
 }
 
 const CategoryCard: React.FC<CategoryCardProps> = ({
   title,
   image,
   link,
-  small = false,
+  className,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -49,8 +49,8 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={cn(
-        "relative overflow-hidden w-full group cursor-none",
-        small ? "h-[400px] md:h-[730px]" : "h-[500px] md:h-[730px]",
+        "relative overflow-hidden w-full group cursor-none h-[300px] lg:h-[730px]",
+        className,
       )}
     >
       <Link href={link} className="block w-full h-full">

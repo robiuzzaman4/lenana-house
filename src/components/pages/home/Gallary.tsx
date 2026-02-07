@@ -2,37 +2,38 @@ import CategoryCard from "@/components/CategoryCard";
 
 const Gallary = () => {
   return (
-    <section className="px-4 lg:px-16">
-      <div className="space-y-8 max-w-[1312px] mx-auto w-full">
+    <section className="">
+      <div className="space-y-8 w-full">
         {/* Residence and Rooms */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid gap-0">
+          <div className="grid lg:grid-cols-2">
+            <CategoryCard
+              title="RESIDENCE"
+              image="/images/home/residence.png"
+              link="/residence"
+              className="h-[600px] lg:h-[1080px] aspect-4/3!"
+            />
+            <CategoryCard
+              title="ROOMS"
+              image="/images/home/rooms.png"
+              link="/rooms"
+              className="h-[600px] lg:h-[1080px] aspect-4/3!"
+            />
+          </div>
+          {/* Experience */}
           <CategoryCard
-            title="RESIDENCE"
-            image="/images/home/residence.png"
-            link="/residence"
-            small
+            title="EXPERIENCE"
+            image="/images/home/experience.png"
+            link="/experience"
           />
+
+          {/* Gallery */}
           <CategoryCard
-            title="ROOMS"
-            image="/images/home/rooms.png"
-            link="/rooms"
-            small
+            title="GALLERY"
+            image="/images/home/gellary.png"
+            link="/gallery"
           />
         </div>
-
-        {/* Experience */}
-        <CategoryCard
-          title="EXPERIENCE"
-          image="/images/home/experience.png"
-          link="/experience"
-        />
-
-        {/* Gallery */}
-        <CategoryCard
-          title="GALLERY"
-          image="/images/home/gellary.png"
-          link="/gallery"
-        />
       </div>
     </section>
   );
