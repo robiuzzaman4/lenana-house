@@ -1,7 +1,27 @@
+"use client";
+
+import { useState } from "react";
 import InquiryForm from "@/components/InquiryForm";
 import Calendar from "@/components/Calendar";
 
+interface DateRange {
+  from: Date | null;
+  to: Date | null;
+}
+
 const InqureForm = () => {
+  const [selectedDates, setSelectedDates] = useState<DateRange>({
+    from: null,
+    to: null,
+  });
+
+  const handleDateSelect = (dates: Date | DateRange | null) => {
+    if (dates && typeof dates === "object" && "from" in dates) {
+      setSelectedDates(dates as DateRange);
+      console.log("Selected date range:", dates);
+    }
+  };
+
   return (
     <section id="enquiry" className="pt-15 pb-[148px] px-4 lg:px-16">
       <div className="max-w-[1312px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-30">
@@ -17,12 +37,22 @@ const InqureForm = () => {
           </div>
 
           <div className="hidden md:block">
-            <Calendar />
+            <Calendar
+              mode="range"
+              selected={selectedDates}
+              onSelect={handleDateSelect}
+              bookedDates={[
+                // Example booked dates - replace with actual data
+                new Date(2026, 1, 5),
+                new Date(2026, 1, 12),
+                new Date(2026, 1, 16),
+              ]}
+            />
           </div>
         </div>
 
         <div>
-          <InquiryForm />
+          <InquiryForm selectedDates={selectedDates} />
         </div>
       </div>
     </section>

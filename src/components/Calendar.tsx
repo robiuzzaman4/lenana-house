@@ -3,15 +3,37 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const Calendar = () => {
-  const [currentDate, setCurrentDate] = useState(new Date(2026, 0, 1)); // Start at Jan 2026
+interface DateRange {
+  from: Date | null;
+  to: Date | null;
+}
 
-  // Constant booked dates for demonstration (mapped by month index for variety)
-  const bookedDatesMap: Record<number, number[]> = {
-    0: [5, 12, 16, 19, 26], // Jan
-    1: [2, 14, 20, 25], // Feb
-    2: [10, 11, 22, 28], // Mar
-  };
+interface CalendarProps {
+  mode?: "single" | "range";
+  selected?: Date | DateRange | null;
+  onSelect?: (date: Date | DateRange | null) => void;
+  disabledDates?: Date[];
+  bookedDates?: Date[];
+  minDate?: Date;
+  maxDate?: Date;
+}
+
+const Calendar: React.FC<CalendarProps> = ({
+  mode = "range",
+  selected,
+  onSelect,
+  disabledDates = [],
+  bookedDates = [],
+  minDate,
+  maxDate,
+}) => {
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [internalSelected, setInternalSelected] = useState<
+    Date | DateRange | null
+  >(selected || (mode === "range" ? { from: null, to: null } : null));
+
+  // Use controlled or uncontrolled state
+  const selectedValue = selected !== undefined ? selected : internalSelected;
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -52,7 +74,106 @@ const Calendar = () => {
     setCurrentDate(new Date(year, month + 1, 1));
   };
 
-  const currentBookedDates = bookedDatesMap[month % 3] || []; // Cycle through some booked dates
+  // Helper function to check if a date is disabled
+  const isDateDisabled = (day: number): boolean => {
+    const date = new Date(year, month, day);
+
+    // Check if date is in disabled dates
+    const isInDisabledDates = disabledDates.some(
+      (d) => d.toDateString() === date.toDateString(),
+    );
+
+    // Check if date is in booked dates
+    const isInBookedDates = bookedDates.some(
+      (d) => d.toDateString() === date.toDateString(),
+    );
+
+    // Check min/max date constraints
+    const isBeforeMin = minDate && date < minDate;
+    const isAfterMax = maxDate && date > maxDate;
+
+    return (
+      isInDisabledDates || isInBookedDates || !!isBeforeMin || !!isAfterMax
+    );
+  };
+
+  // Helper function to check if a date is selected
+  const isDateSelected = (day: number): boolean => {
+    const date = new Date(year, month, day);
+
+    if (mode === "single") {
+      return (
+        selectedValue instanceof Date &&
+        selectedValue.toDateString() === date.toDateString()
+      );
+    } else {
+      const range = selectedValue as DateRange;
+      if (!range || !range.from) return false;
+
+      if (!range.to) {
+        return range.from.toDateString() === date.toDateString();
+      }
+
+      return date >= range.from && date <= range.to;
+    }
+  };
+
+  // Helper function to check if a date is the start or end of a range
+  const isRangeStart = (day: number): boolean => {
+    if (mode !== "range") return false;
+    const date = new Date(year, month, day);
+    const range = selectedValue as DateRange;
+    return range?.from?.toDateString() === date.toDateString();
+  };
+
+  const isRangeEnd = (day: number): boolean => {
+    if (mode !== "range") return false;
+    const date = new Date(year, month, day);
+    const range = selectedValue as DateRange;
+    return range?.to?.toDateString() === date.toDateString();
+  };
+
+  // Handle date click
+  const handleDateClick = (day: number) => {
+    if (isDateDisabled(day)) return;
+
+    const clickedDate = new Date(year, month, day);
+
+    if (mode === "single") {
+      const newValue = clickedDate;
+      setInternalSelected(newValue);
+      onSelect?.(newValue);
+    } else {
+      const range = selectedValue as DateRange;
+
+      // If no start date, set it
+      if (!range?.from) {
+        const newRange = { from: clickedDate, to: null };
+        setInternalSelected(newRange);
+        onSelect?.(newRange);
+      }
+      // If start date exists but no end date
+      else if (!range.to) {
+        // If clicked date is before start, reset with new start
+        if (clickedDate < range.from) {
+          const newRange = { from: clickedDate, to: null };
+          setInternalSelected(newRange);
+          onSelect?.(newRange);
+        } else {
+          // Set as end date
+          const newRange = { from: range.from, to: clickedDate };
+          setInternalSelected(newRange);
+          onSelect?.(newRange);
+        }
+      }
+      // If both dates are set, start over
+      else {
+        const newRange = { from: clickedDate, to: null };
+        setInternalSelected(newRange);
+        onSelect?.(newRange);
+      }
+    }
+  };
 
   return (
     <div className="max-w-md w-full font-sans">
@@ -64,12 +185,14 @@ const Calendar = () => {
           <button
             onClick={handlePrev}
             className="cursor-pointer hover:opacity-50 transition-opacity p-1"
+            aria-label="Previous month"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={handleNext}
             className="cursor-pointer hover:opacity-50 transition-opacity p-1"
+            aria-label="Next month"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -90,16 +213,26 @@ const Calendar = () => {
         ))}
 
         {days.map((d) => {
-          const isBooked = currentBookedDates.includes(d);
+          const isDisabled = isDateDisabled(d);
+          const isSelected = isDateSelected(d);
+          const isStart = isRangeStart(d);
+          const isEnd = isRangeEnd(d);
+
           return (
-            <div
+            <button
               key={d}
-              className={`py-2 transition-colors ${
-                isBooked ? "text-dark/20" : "text-dark"
+              onClick={() => handleDateClick(d)}
+              disabled={isDisabled}
+              className={`size-9 rounded-full transition-all ${
+                isDisabled
+                  ? "text-dark/20 cursor-not-allowed"
+                  : "text-dark cursor-pointer hover:bg-secondary"
+              } ${isSelected && !isDisabled ? "bg-secondary text-white" : ""} ${
+                (isStart || isEnd) && !isDisabled ? "font-bold" : ""
               }`}
             >
               {d}
-            </div>
+            </button>
           );
         })}
 

@@ -29,18 +29,44 @@ const FormField: React.FC<FormFieldProps> = ({
   </div>
 );
 
-const InquiryForm: React.FC = () => {
+interface DateRange {
+  from: Date | null;
+  to: Date | null;
+}
+
+interface InquiryFormProps {
+  selectedDates?: DateRange;
+}
+
+const InquiryForm: React.FC<InquiryFormProps> = ({ selectedDates }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    console.log("Form Submitted:", data);
+
+    // Include selected dates in submission
+    const submissionData = {
+      ...data,
+      checkIn: selectedDates?.from?.toLocaleDateString() || null,
+      checkOut: selectedDates?.to?.toLocaleDateString() || null,
+    };
+
+    console.log("Form Submitted:", submissionData);
+  };
+
+  const formatDate = (date: Date | null) => {
+    if (!date) return "";
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-6 bg-[#F0EFEF] px-8 md:px-12 py-12 md:py-15"
+      className="space-y-6 bg-[#F0EFEF] px-4 lg:px-12 py-4 lg:py-12"
     >
       <FormField label="Name" name="name" placeholder="Full name" required />
       <FormField
@@ -57,6 +83,36 @@ const InquiryForm: React.FC = () => {
         placeholder="+1 | 901 6543 7464"
         required
       />
+
+      {/* Date Range Display */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <label className="text-sm tracking-widest text-dark block">
+            Check-in
+          </label>
+          <input
+            type="text"
+            name="checkIn"
+            value={formatDate(selectedDates?.from || null)}
+            readOnly
+            placeholder="Select dates"
+            className="w-full border border-black/5 px-4 py-4 focus:outline-none focus:border-secondary transition-colors text-sm bg-white text-dark placeholder:text-dark/30"
+          />
+        </div>
+        <div className="space-y-2">
+          <label className="text-sm tracking-widest text-dark block">
+            Check-out
+          </label>
+          <input
+            type="text"
+            name="checkOut"
+            value={formatDate(selectedDates?.to || null)}
+            readOnly
+            placeholder="Select dates"
+            className="w-full border border-black/5 px-4 py-4 focus:outline-none focus:border-secondary transition-colors text-sm bg-white text-dark placeholder:text-dark/30"
+          />
+        </div>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
