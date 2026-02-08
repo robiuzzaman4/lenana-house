@@ -49,7 +49,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={cn(
-        "relative overflow-hidden w-full group cursor-none h-[300px] lg:h-[730px]",
+        "relative overflow-hidden w-full group cursor-none h-[600px] lg:h-[730px]",
         className,
       )}
     >

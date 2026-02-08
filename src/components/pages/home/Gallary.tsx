@@ -11,13 +11,13 @@ const Gallary = () => {
               title="RESIDENCE"
               image="/images/home/residence.png"
               link="/residence"
-              className="h-[600px] lg:h-[1080px] aspect-4/3!"
+              className="lg:h-[1080px] aspect-4/3!"
             />
             <CategoryCard
               title="ROOMS"
               image="/images/home/rooms.png"
               link="/rooms"
-              className="h-[600px] lg:h-[1080px] aspect-4/3!"
+              className="lg:h-[1080px] aspect-4/3!"
             />
           </div>
           {/* Experience */}
