@@ -45,27 +45,43 @@ const Hero = () => {
         <div className="max-w-[1312px] mx-auto w-full h-full flex flex-col relative">
           {/* Centered Image */}
           <div className="flex-1 flex items-center justify-center">
-            {!scrolled && (
-              <motion.div
-                layoutId="main-logo"
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 30,
-                  mass: 0.8,
-                }}
-              >
-                <Link href={"/"}>
-                  <Image
-                    src={"/images/brand.png"}
-                    alt="lenana house"
-                    width={1080}
-                    height={720}
-                    className="w-fit h-[40px] object-contain"
-                  />
-                </Link>
-              </motion.div>
-            )}
+            {/* Mobile: Always visible */}
+            <div className="lg:hidden">
+              <Link href={"/"}>
+                <Image
+                  src={"/images/brand.png"}
+                  alt="lenana house"
+                  width={1080}
+                  height={720}
+                  className="w-fit h-[40px] object-contain"
+                />
+              </Link>
+            </div>
+
+            {/* Desktop: Visible only when not scrolled, with animation */}
+            <div className="hidden lg:block">
+              {!scrolled && (
+                <motion.div
+                  layoutId="main-logo"
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 30,
+                    mass: 0.8,
+                  }}
+                >
+                  <Link href={"/"}>
+                    <Image
+                      src={"/images/brand.png"}
+                      alt="lenana house"
+                      width={1080}
+                      height={720}
+                      className="w-fit h-[40px] object-contain"
+                    />
+                  </Link>
+                </motion.div>
+              )}
+            </div>
           </div>
 
           {/* Day/Night Switcher - Bottom Left of container */}

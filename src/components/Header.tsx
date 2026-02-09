@@ -50,7 +50,7 @@ const Header = () => {
           </button>
 
           {/* Logo Area */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             {(!isHome || scrolled) && (
               <motion.div
                 layoutId={isHome ? "main-logo" : undefined}
