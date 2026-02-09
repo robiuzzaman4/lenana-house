@@ -3,6 +3,7 @@ import { Linden_Hill } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import LenisProvider from "@/components/LenisProvider";
 
 const linden = Linden_Hill({
   variable: "--font-serif",
@@ -29,12 +30,14 @@ export default function RootLayout({
       <body
         className={`${linden.variable} antialiased selection:bg-secondary selection:text-white`}
       >
-        <InquiryProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <InquireDialog />
-        </InquiryProvider>
+        <LenisProvider>
+          <InquiryProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+            <InquireDialog />
+          </InquiryProvider>
+        </LenisProvider>
       </body>
     </html>
   );
