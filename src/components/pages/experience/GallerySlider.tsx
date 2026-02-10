@@ -30,7 +30,7 @@ const GallerySlider = () => {
               <div
                 key={index}
                 className={cn(
-                  "relative flex-[0_0_100%] md:flex-[0_0_calc(33.333%-21.33px)] aspect-4/5 overflow-hidden group cursor-pointer",
+                  "relative flex-[0_0_100%] md:flex-[0_0_calc(33.333%-21.33px)] aspect-4/5 overflow-hidden group",
                   {
                     "ml-8": index === 0,
                   },
